@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amharic to Oromo Translator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <h1>Amharic <span class="highlight">to</span> Oromo</h1>
+            <p>Advanced Neural Machine Translation</p>
+        </header>
+
+        <div class="translation-grid">
+            <div class="input-card glass-panel">
+                <div class="card-header">
+                    <h2>Amharic</h2>
+                    <button id="clearBtn" class="icon-btn" aria-label="Clear input">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                    </button>
+                </div>
+                <textarea id="sourceText" placeholder="Enter Amharic text here..." dir="auto"></textarea>
+                <div class="card-footer">
+                    <span class="char-count" id="charCount">0 characters</span>
+                </div>
+            </div>
+
+            <div class="action-column">
+                <button id="translateBtn" class="translate-btn">
+                    <span class="btn-text">Translate</span>
+                    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <div class="loader-spinner" id="loader"></div>
+                </button>
+            </div>
+
+            <div class="output-card glass-panel">
+                <div class="card-header">
+                    <h2>Oromo</h2>
+                    <button id="copyBtn" class="icon-btn" aria-label="Copy to clipboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                    </button>
+                </div>
+                <div class="output-content">
+                    <p id="targetText" class="placeholder-text">Translation will appear here...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="toast" class="toast hidden">Copied to clipboard!</div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

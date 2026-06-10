@@ -1,0 +1,12 @@
+pandas
+numpy
+tensorflow
+sentencepiece
+scikit-learn
+openpyxl
+jupyter
+ipykernel
+nltk
+sacrebleu
+tensorboard
+Flask
