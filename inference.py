@@ -16,7 +16,7 @@ AM_MODEL_PATH = os.path.join(BASE_DIR, "am.model")
 OM_MODEL_PATH = os.path.join(BASE_DIR, "om.model")
 
 MAX_IN = 153
-MAX_OUT = 62
+MAX_OUT = 72
 
 
 def load_model_compatible(path):
