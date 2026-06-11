@@ -1,6 +1,6 @@
 pandas
 numpy
-tensorflow
+tensorflow>=2.16
 sentencepiece
 scikit-learn
 openpyxl

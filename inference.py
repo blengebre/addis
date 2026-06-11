@@ -5,9 +5,11 @@ import tempfile
 import zipfile
 
 import numpy as np
+import pandas as pd
 import sentencepiece as spm
 import tensorflow as tf
 from nltk.translate.bleu_score import SmoothingFunction, sentence_bleu
+from sklearn.model_selection import train_test_split
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -19,35 +21,58 @@ MAX_IN = 153
 MAX_OUT = 72
 
 
+def _patch_keras_config(obj):
+    """Remove config keys added by newer Keras that older versions reject."""
+    modified = False
+    unsupported_keys = {"quantization_config", "use_gate"}
+
+    if isinstance(obj, dict):
+        for key in list(obj.keys()):
+            if key in unsupported_keys:
+                obj.pop(key)
+                modified = True
+            elif key == "dtype" and isinstance(obj[key], dict):
+                dtype_obj = obj[key]
+                if dtype_obj.get("class_name") == "DTypePolicy":
+                    obj[key] = dtype_obj.get("config", {}).get("name", "float32")
+                    modified = True
+                else:
+                    if _patch_keras_config(obj[key]):
+                        modified = True
+            else:
+                if _patch_keras_config(obj[key]):
+                    modified = True
+    elif isinstance(obj, list):
+        for item in obj:
+            if _patch_keras_config(item):
+                modified = True
+
+    return modified
+
+
 def load_model_compatible(path):
     """Load the saved .keras model and remove unsupported layer config fields."""
     with zipfile.ZipFile(path, "r") as reader:
         config = json.loads(reader.read("config.json").decode("utf-8"))
-        modified = False
 
-        for layer in config["config"]["layers"]:
-            if layer["class_name"] == "MultiHeadAttention" and "use_gate" in layer["config"]:
-                layer["config"].pop("use_gate")
-                modified = True
+    if not _patch_keras_config(config):
+        return tf.keras.models.load_model(path, compile=False)
 
-        if not modified:
-            return tf.keras.models.load_model(path, compile=False)
+    with tempfile.NamedTemporaryFile(suffix=".keras", delete=False) as tmp:
+        tmp_path = tmp.name
 
-        with tempfile.NamedTemporaryFile(suffix=".keras", delete=False) as tmp:
-            tmp_path = tmp.name
-
-        try:
-            with zipfile.ZipFile(path, "r") as reader:
-                with zipfile.ZipFile(tmp_path, "w") as writer:
-                    for entry in reader.namelist():
-                        if entry == "config.json":
-                            writer.writestr(entry, json.dumps(config))
-                        else:
-                            writer.writestr(entry, reader.read(entry))
-            return tf.keras.models.load_model(tmp_path, compile=False)
-        finally:
-            if os.path.exists(tmp_path):
-                os.remove(tmp_path)
+    try:
+        with zipfile.ZipFile(path, "r") as reader:
+            with zipfile.ZipFile(tmp_path, "w") as writer:
+                for entry in reader.namelist():
+                    if entry == "config.json":
+                        writer.writestr(entry, json.dumps(config))
+                    else:
+                        writer.writestr(entry, reader.read(entry))
+        return tf.keras.models.load_model(tmp_path, compile=False)
+    finally:
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
 
 
 model = load_model_compatible(MODEL_PATH)
@@ -85,11 +110,49 @@ def compute_bleu(reference, candidate):
     return sentence_bleu([reference_tokens], candidate_tokens, smoothing_function=smooth)
 
 
+def load_test_df():
+    df = pd.read_excel(os.path.join(BASE_DIR, "cleaned_amh_omo.xlsx"))
+    _, temp_df = train_test_split(df, test_size=0.2, random_state=42)
+    _, test_df = train_test_split(temp_df, test_size=0.5, random_state=42)
+    return test_df
+
+
+def compute_bleu_on_df(df, n=10):
+    sample_size = min(n, len(df))
+    sample_df = df.sample(n=sample_size, random_state=42)
+    scores = []
+    smooth = SmoothingFunction().method4
+    for idx, row in sample_df.iterrows():
+        try:
+            ref = row["Oromo"].split()
+            pred = translate(row["Amharic"]).split()
+            if ref and pred:
+                scores.append(sentence_bleu([ref], pred, smoothing_function=smooth))
+        except Exception as e:
+            print(f"Skipping row {idx}: {e}")
+    return float(np.mean(scores)) if scores else 0.0
+
+
+def evaluate_test_bleu(n=10):
+    global model
+    model = load_model_compatible(MODEL_PATH)
+    test_df = load_test_df()
+    bleu_score = compute_bleu_on_df(test_df, n=n)
+    print(bleu_score)
+    return bleu_score
+
+
 def main():
     parser = argparse.ArgumentParser(description="Amharic-to-Oromo inference")
     parser.add_argument("--translate", type=str, help="Translate a single Amharic sentence")
     parser.add_argument("--reference", type=str, help="Reference Oromo sentence for BLEU scoring")
+    parser.add_argument("--eval-bleu", action="store_true", help="Compute BLEU on the test split")
+    parser.add_argument("--n", type=int, default=10, help="Number of test samples for BLEU evaluation")
     args = parser.parse_args()
+
+    if args.eval_bleu:
+        evaluate_test_bleu(n=args.n)
+        return
 
     if args.translate:
         translation = translate(args.translate)
