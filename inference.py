@@ -1,3 +1,11 @@
+"""
+Amharic → Oromo Inference Script
+=================================
+Updated to:
+  - Load max_in / max_out from config.json (no hardcoding)
+  - Match BOS/EOS handling from the fixed training script
+"""
+
 import argparse
 import json
 import os
@@ -16,9 +24,31 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "amh_omo_transformer.keras")
 AM_MODEL_PATH = os.path.join(BASE_DIR, "am.model")
 OM_MODEL_PATH = os.path.join(BASE_DIR, "om.model")
+CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
 
-MAX_IN = 153
-MAX_OUT = 72
+# =====================================================
+# LOAD CONFIG — no more hardcoded MAX_IN / MAX_OUT
+# =====================================================
+
+if os.path.exists(CONFIG_PATH):
+    with open(CONFIG_PATH) as f:
+        config = json.load(f)
+    MAX_IN = config["max_in"]
+    MAX_OUT = config["max_out"]
+    print(f"Loaded config: max_in={MAX_IN}, max_out={MAX_OUT}")
+else:
+    # Fallback (will be wrong if these don't match training)
+    print("WARNING: config.json not found — using fallback values!")
+    MAX_IN = 153
+    MAX_OUT = 72
+
+# Decoder input length = MAX_OUT - 1 (we drop the last token)
+DEC_SEQ_LEN = MAX_OUT - 1
+
+
+# =====================================================
+# LOAD MODEL (with backward-compatibility patching)
+# =====================================================
 
 
 def _patch_keras_config(obj):
@@ -75,6 +105,7 @@ def load_model_compatible(path):
             os.remove(tmp_path)
 
 
+print("Loading model...")
 model = load_model_compatible(MODEL_PATH)
 
 am_sp = spm.SentencePieceProcessor()
@@ -83,24 +114,40 @@ am_sp.load(AM_MODEL_PATH)
 om_sp = spm.SentencePieceProcessor()
 om_sp.load(OM_MODEL_PATH)
 
+BOS = om_sp.bos_id()  # 2
+EOS = om_sp.eos_id()  # 3
+
+
+# =====================================================
+# TRANSLATE
+# =====================================================
+
 
 def translate(sentence):
-    encoded = am_sp.encode(sentence, out_type=int)
+    """Translate a single Amharic sentence to Oromo."""
+    encoded = am_sp.encode(str(sentence), out_type=int)
     encoded = pad_sequences([encoded], maxlen=MAX_IN, padding="post")
 
-    output = [om_sp.bos_id()]
-    for _ in range(MAX_OUT - 1):
-        dec_input = pad_sequences([output], maxlen=MAX_OUT - 1, padding="post")
+    # Start with BOS token — matches training decoder input
+    output = [BOS]
+
+    for _ in range(DEC_SEQ_LEN):
+        dec_input = pad_sequences([output], maxlen=DEC_SEQ_LEN, padding="post")
         preds = model.predict([encoded, dec_input], verbose=0)
         next_token = int(np.argmax(preds[0, len(output) - 1]))
 
-        if next_token == om_sp.eos_id():
+        if next_token == EOS:
             break
-
         output.append(next_token)
 
-    tokens = [t for t in output if t not in (om_sp.bos_id(), om_sp.eos_id(), 0)]
+    # Strip special tokens before decoding
+    tokens = [t for t in output if t not in (BOS, EOS, 0)]
     return om_sp.decode(tokens)
+
+
+# =====================================================
+# BLEU
+# =====================================================
 
 
 def compute_bleu(reference, candidate):
@@ -124,8 +171,8 @@ def compute_bleu_on_df(df, n=10):
     smooth = SmoothingFunction().method4
     for idx, row in sample_df.iterrows():
         try:
-            ref = row["Oromo"].split()
-            pred = translate(row["Amharic"]).split()
+            ref = str(row["Oromo"]).split()
+            pred = translate(str(row["Amharic"])).split()
             if ref and pred:
                 scores.append(sentence_bleu([ref], pred, smoothing_function=smooth))
         except Exception as e:
@@ -134,12 +181,15 @@ def compute_bleu_on_df(df, n=10):
 
 
 def evaluate_test_bleu(n=10):
-    global model
-    model = load_model_compatible(MODEL_PATH)
     test_df = load_test_df()
     bleu_score = compute_bleu_on_df(test_df, n=n)
-    print(bleu_score)
+    print(f"BLEU score ({n} samples): {bleu_score:.4f}")
     return bleu_score
+
+
+# =====================================================
+# CLI
+# =====================================================
 
 
 def main():
@@ -157,12 +207,13 @@ def main():
     if args.translate:
         translation = translate(args.translate)
         print("Amharic:", args.translate)
-        print("Oromo:", translation)
+        print("Oromo:  ", translation)
         if args.reference:
             bleu_score = compute_bleu(args.reference, translation)
-            print("BLEU:", round(bleu_score, 4))
+            print("BLEU:   ", round(bleu_score, 4))
         return
 
+    # Interactive mode
     while True:
         source = input("\nEnter Amharic text (or 'quit'): ")
         if source.strip().lower() == "quit":
