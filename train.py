@@ -379,17 +379,19 @@ def translate(sentence):
 
 # Test on a few training examples
 print("\n" + "=" * 60)
-print("QUICK TRANSLATION TEST (on training samples)")
+print("QUICK TRANSLATION TEST (on TEST samples)")
 print("=" * 60)
-sample = train_df.head(5)
+
+sample = test_df.sample(5, random_state=42)
+
 for _, row in sample.iterrows():
     src = str(row["Amharic"])
     ref = str(row["Oromo"])
     pred = translate(src)
-    print(f"\n  AM: {src}")
-    print(f"  REF: {ref}")
-    print(f"  PRED: {pred}")
 
+    print(f"\nAM:   {src}")
+    print(f"REF:  {ref}")
+    print(f"PRED: {pred}")
 # =====================================================
 # BLEU EVALUATION ON TEST SET
 # =====================================================
