@@ -16,3 +16,6 @@ __pycache__/
 .env
 .venv
 env-local
+logs/
+__pycache__/
+*.pyc
