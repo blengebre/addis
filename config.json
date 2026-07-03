@@ -1,8 +1,7 @@
 {
   "max_in": 153,
-  "max_out": 74,
-  "am_vocab_size": 4000,
-  "om_vocab_size": 4000,
+  "max_out": 75,
+  "vocab_size": 8000,
   "d_model": 128,
   "num_heads": 4,
   "ff_dim": 512,

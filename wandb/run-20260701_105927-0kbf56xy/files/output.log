@@ -1,0 +1,81 @@
+[34m[1mwandb[0m: [33mWARNING[0m When using `save_best_only`, ensure that the `filepath` argument contains formatting placeholders like `{epoch:02d}` or `{batch:02d}`. This ensures correct interpretation of the logged artifacts.
+Epoch 1/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 86ms/step - loss: 5.5104 - masked_accuracy: 0.2434
+--- Validation BLEU at Epoch 1: 32.47 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m751s[0m 102ms/step - loss: 4.4838 - masked_accuracy: 0.3270 - val_loss: 3.3648 - val_masked_accuracy: 0.4436 - val_bleu: 32.4668
+Epoch 2/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 3.1500 - masked_accuracy: 0.4736
+--- Validation BLEU at Epoch 2: 25.41 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m742s[0m 101ms/step - loss: 2.9666 - masked_accuracy: 0.4994 - val_loss: 2.5530 - val_masked_accuracy: 0.5542 - val_bleu: 25.4066
+Epoch 3/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 2.4989 - masked_accuracy: 0.5612
+--- Validation BLEU at Epoch 3: 32.17 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m751s[0m 103ms/step - loss: 2.4462 - masked_accuracy: 0.5681 - val_loss: 2.2360 - val_masked_accuracy: 0.5947 - val_bleu: 32.1729
+Epoch 4/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 2.2176 - masked_accuracy: 0.5970
+--- Validation BLEU at Epoch 4: 20.56 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m751s[0m 103ms/step - loss: 2.1967 - masked_accuracy: 0.6003 - val_loss: 2.0918 - val_masked_accuracy: 0.6158 - val_bleu: 20.5567
+Epoch 5/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 2.0531 - masked_accuracy: 0.6194
+--- Validation BLEU at Epoch 5: 18.85 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m753s[0m 103ms/step - loss: 2.0534 - masked_accuracy: 0.6199 - val_loss: 2.0108 - val_masked_accuracy: 0.6256 - val_bleu: 18.8503
+Epoch 6/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 86ms/step - loss: 1.9423 - masked_accuracy: 0.6359
+--- Validation BLEU at Epoch 6: 40.08 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m756s[0m 103ms/step - loss: 1.9529 - masked_accuracy: 0.6349 - val_loss: 1.9507 - val_masked_accuracy: 0.6377 - val_bleu: 40.0778
+Epoch 7/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 1.8675 - masked_accuracy: 0.6462
+--- Validation BLEU at Epoch 7: 0.00 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m750s[0m 103ms/step - loss: 1.8801 - masked_accuracy: 0.6455 - val_loss: 1.8952 - val_masked_accuracy: 0.6465 - val_bleu: 0.0000e+00
+Epoch 8/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 86ms/step - loss: 1.8062 - masked_accuracy: 0.6562
+--- Validation BLEU at Epoch 8: 24.27 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m756s[0m 103ms/step - loss: 1.8194 - masked_accuracy: 0.6547 - val_loss: 1.8887 - val_masked_accuracy: 0.6494 - val_bleu: 24.2746
+Epoch 9/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 87ms/step - loss: 1.7479 - masked_accuracy: 0.6648
+--- Validation BLEU at Epoch 9: 35.36 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m766s[0m 105ms/step - loss: 1.7702 - masked_accuracy: 0.6621 - val_loss: 1.8468 - val_masked_accuracy: 0.6550 - val_bleu: 35.3553
+Epoch 10/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 86ms/step - loss: 1.7048 - masked_accuracy: 0.6719
+--- Validation BLEU at Epoch 10: 35.93 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m756s[0m 103ms/step - loss: 1.7263 - masked_accuracy: 0.6695 - val_loss: 1.8178 - val_masked_accuracy: 0.6590 - val_bleu: 35.9304
+Epoch 11/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 86ms/step - loss: 1.6692 - masked_accuracy: 0.6769
+--- Validation BLEU at Epoch 11: 70.71 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m760s[0m 104ms/step - loss: 1.6885 - masked_accuracy: 0.6750 - val_loss: 1.8106 - val_masked_accuracy: 0.6609 - val_bleu: 70.7107
+Epoch 12/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 87ms/step - loss: 1.6384 - masked_accuracy: 0.6826
+--- Validation BLEU at Epoch 12: 45.18 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m771s[0m 105ms/step - loss: 1.6559 - masked_accuracy: 0.6808 - val_loss: 1.7828 - val_masked_accuracy: 0.6646 - val_bleu: 45.1801
+Epoch 13/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 88ms/step - loss: 1.6052 - masked_accuracy: 0.6875
+--- Validation BLEU at Epoch 13: 53.73 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m774s[0m 106ms/step - loss: 1.6268 - masked_accuracy: 0.6851 - val_loss: 1.7749 - val_masked_accuracy: 0.6686 - val_bleu: 53.7285
+Epoch 14/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 87ms/step - loss: 1.5817 - masked_accuracy: 0.6911
+--- Validation BLEU at Epoch 14: 0.00 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m764s[0m 104ms/step - loss: 1.6014 - masked_accuracy: 0.6890 - val_loss: 1.7665 - val_masked_accuracy: 0.6713 - val_bleu: 0.0000e+00
+Epoch 15/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 88ms/step - loss: 1.5573 - masked_accuracy: 0.6959
+--- Validation BLEU at Epoch 15: 30.74 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m773s[0m 106ms/step - loss: 1.5770 - masked_accuracy: 0.6934 - val_loss: 1.7568 - val_masked_accuracy: 0.6719 - val_bleu: 30.7394
+Epoch 16/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 92ms/step - loss: 1.5330 - masked_accuracy: 0.6994
+--- Validation BLEU at Epoch 16: 30.21 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m809s[0m 111ms/step - loss: 1.5527 - masked_accuracy: 0.6969 - val_loss: 1.7439 - val_masked_accuracy: 0.6753 - val_bleu: 30.2138
+Epoch 17/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 1.5103 - masked_accuracy: 0.7035
+--- Validation BLEU at Epoch 17: 25.41 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m756s[0m 103ms/step - loss: 1.5340 - masked_accuracy: 0.7002 - val_loss: 1.7323 - val_masked_accuracy: 0.6761 - val_bleu: 25.4066
+Epoch 18/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 1.4902 - masked_accuracy: 0.7072
+--- Validation BLEU at Epoch 18: 35.36 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m755s[0m 103ms/step - loss: 1.5154 - masked_accuracy: 0.7034 - val_loss: 1.7260 - val_masked_accuracy: 0.6785 - val_bleu: 35.3553
+Epoch 19/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 1.4747 - masked_accuracy: 0.7096
+--- Validation BLEU at Epoch 19: 17.97 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m754s[0m 103ms/step - loss: 1.4976 - masked_accuracy: 0.7067 - val_loss: 1.7253 - val_masked_accuracy: 0.6802 - val_bleu: 17.9652
+Epoch 20/20
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 85ms/step - loss: 1.4447 - masked_accuracy: 0.7148
+--- Validation BLEU at Epoch 20: 0.00 ---
+[1m7315/7315[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m754s[0m 103ms/step - loss: 1.4778 - masked_accuracy: 0.7097 - val_loss: 1.7045 - val_masked_accuracy: 0.6811 - val_bleu: 0.0000e+00

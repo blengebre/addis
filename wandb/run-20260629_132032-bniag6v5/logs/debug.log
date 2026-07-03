@@ -1,0 +1,25 @@
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_setup.py:_flush():81] Current SDK version is 0.28.0
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_setup.py:_flush():81] Configure stats pid to 3789392
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_init.py:setup_run_log_directory():725] Logging user logs to /home/genesistwo/newe/addis/wandb/run-20260629_132032-bniag6v5/logs/debug.log
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_init.py:setup_run_log_directory():726] Logging internal logs to /home/genesistwo/newe/addis/wandb/run-20260629_132032-bniag6v5/logs/debug-internal.log
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_init.py:init():768] calling init triggers
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_init.py:init():773] wandb.init called with sweep_config: {}
+config: {'architecture': 'Transformer', 'dataset': 'cleaned_amh_omo.xlsx', 'epochs': 20, 'batch_size': 16, 'learning_rate': 'Noam schedule', 'optimizer': 'Adam', 'd_model': 128, 'num_heads': 4, 'ff_dim': 512, 'encoder_layers': 2, 'decoder_layers': 2, 'vocab_size': 8000, 'tokenizer': 'SentencePiece BPE', '_wandb': {}}
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_init.py:init():816] starting backend
+2026-06-29 13:20:32,465 INFO    MainThread:3789392 [wandb_init.py:init():831] sending inform_init request
+2026-06-29 13:20:33,218 INFO    MainThread:3789392 [wandb_init.py:init():836] backend started and connected
+2026-06-29 13:20:33,228 INFO    MainThread:3789392 [wandb_init.py:init():906] updated telemetry
+2026-06-29 13:20:33,234 INFO    MainThread:3789392 [wandb_init.py:init():929] communicating run to backend with 90.0 second timeout
+2026-06-29 13:20:35,981 INFO    MainThread:3789392 [wandb_init.py:init():974] starting run threads in backend
+2026-06-29 13:20:36,040 INFO    MainThread:3789392 [wandb_run.py:_console_start():2523] atexit reg
+2026-06-29 13:20:36,041 INFO    MainThread:3789392 [wandb_run.py:_redirect():2373] redirect: wrap_raw
+2026-06-29 13:20:36,041 INFO    MainThread:3789392 [wandb_run.py:_redirect():2442] Wrapping output streams.
+2026-06-29 13:20:36,041 INFO    MainThread:3789392 [wandb_run.py:_redirect():2465] Redirects installed.
+2026-06-29 13:20:36,042 INFO    MainThread:3789392 [wandb_init.py:init():1012] run started, returning control to user process
+2026-06-29 13:20:45,132 INFO    MainThread:3789392 [wandb_run.py:_config_callback():1346] config_cb None None {'max_in': 153, 'max_out': 75}
+2026-06-29 18:07:33,511 INFO    MainThread:3789392 [wandb_run.py:_finish():2285] finishing run blen-gebre-ug-addis-abeba-university/amharic-oromo-transformer/bniag6v5
+2026-06-29 18:07:33,512 INFO    MainThread:3789392 [wandb_run.py:_atexit_cleanup():2490] got exitcode: 0
+2026-06-29 18:07:33,512 INFO    MainThread:3789392 [wandb_run.py:_restore():2472] restore
+2026-06-29 18:07:33,512 INFO    MainThread:3789392 [wandb_run.py:_restore():2478] restore done
+2026-06-29 18:07:36,387 INFO    MainThread:3789392 [wandb_run.py:_footer_sync_info():3895] logging synced files

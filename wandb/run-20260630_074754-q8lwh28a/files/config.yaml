@@ -1,0 +1,97 @@
+_wandb:
+    value:
+        cli_version: 0.28.0
+        e:
+            0wbvppcsd2zzb5sapycwsifv7tzqfbha:
+                codePath: train.py
+                codePathLocal: train.py
+                cpu_count: 12
+                cpu_count_logical: 24
+                cudaVersion: "12.4"
+                disk:
+                    /:
+                        total: "2013991550976"
+                        used: "179040239616"
+                email: blen.gebre-ug@aau.edu.et
+                executable: /home/genesistwo/newe/addis/venv/bin/python
+                git:
+                    commit: 291c8fb4a92106f13e33863682ca7aec4dd357ac
+                    remote: https://github.com/blengebre/addis.git
+                gpu: NVIDIA RTX 4000 Ada Generation
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 6144
+                      memoryTotal: "21469593600"
+                      name: NVIDIA RTX 4000 Ada Generation
+                      uuid: GPU-4bb2c4ab-1d61-fd63-244f-338da3ea9868
+                host: genesissix
+                memory:
+                    total: "66623873024"
+                os: Linux-6.8.0-124-generic-x86_64-with-glibc2.39
+                program: /home/genesistwo/newe/addis/train.py
+                python: CPython 3.13.13
+                root: /home/genesistwo/newe/addis
+                startedAt: "2026-06-30T07:47:54.580168Z"
+                writerId: 0wbvppcsd2zzb5sapycwsifv7tzqfbha
+        m:
+            - "1": epoch/epoch
+              "6":
+                - 3
+              "7": []
+            - "2": epoch/*
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.13.13
+        t:
+            "1":
+                - 2
+                - 3
+                - 5
+                - 53
+            "2":
+                - 2
+                - 3
+                - 5
+                - 53
+            "3":
+                - 7
+                - 16
+                - 38
+                - 39
+            "4": 3.13.13
+            "5": 0.28.0
+            "12": 0.28.0
+            "13": linux-x86_64
+architecture:
+    value: Transformer
+batch_size:
+    value: 16
+d_model:
+    value: 128
+dataset:
+    value: cleaned_amh_omo.xlsx
+decoder_layers:
+    value: 2
+encoder_layers:
+    value: 2
+epochs:
+    value: 20
+ff_dim:
+    value: 512
+learning_rate:
+    value: Noam schedule
+max_in:
+    value: 153
+max_out:
+    value: 75
+num_heads:
+    value: 4
+optimizer:
+    value: Adam
+tokenizer:
+    value: SentencePiece BPE
+vocab_size:
+    value: 8000

@@ -1,0 +1,17 @@
+{"time":"2026-06-29T13:19:03.466083392Z","level":"INFO","msg":"wandb-core"}
+{"time":"2026-06-29T13:19:03.466390867Z","level":"INFO","msg":"stream: starting","core version":"0.28.0"}
+{"time":"2026-06-29T13:19:04.210532153Z","level":"INFO","msg":"stream: created new stream","id":"3qc6djmi"}
+{"time":"2026-06-29T13:19:04.210661647Z","level":"INFO","msg":"handler: started"}
+{"time":"2026-06-29T13:19:04.21082641Z","level":"INFO","msg":"stream: started"}
+{"time":"2026-06-29T13:19:04.210856804Z","level":"INFO","msg":"writer: started","stream_id":"3qc6djmi"}
+{"time":"2026-06-29T13:19:04.210881909Z","level":"INFO","msg":"sender: started"}
+{"time":"2026-06-29T13:19:04.510864673Z","level":"ERROR","msg":"api: HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2026-06-29T13:19:04.511001046Z","level":"ERROR","msg":"runupserter: failed to init run","error":"returned error 404: {\"data\":{\"upsertBucket\":null},\"errors\":[{\"message\":\"entity blen-gebre-ug-addis-ababa-university not found during upsertBucket\",\"path\":[\"upsertBucket\"]}]}"}
+{"time":"2026-06-29T13:19:04.520115381Z","level":"ERROR","msg":"sender: uploadConfigFile: runhandle: run not yet initialized"}
+{"time":"2026-06-29T13:19:04.520328535Z","level":"ERROR","msg":"runfiles: runhandle: run not yet initialized"}
+{"time":"2026-06-29T13:19:04.520388864Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-06-29T13:19:04.520397087Z","level":"INFO","msg":"stream: finishing up"}
+{"time":"2026-06-29T13:19:04.520410706Z","level":"INFO","msg":"handler: closed"}
+{"time":"2026-06-29T13:19:04.520431471Z","level":"INFO","msg":"sender: closed"}
+{"time":"2026-06-29T13:19:04.520434939Z","level":"INFO","msg":"stream: all finished"}
+{"time":"2026-06-29T13:19:04.529078773Z","level":"ERROR","msg":"stream: runURL: runhandle: run not yet initialized"}

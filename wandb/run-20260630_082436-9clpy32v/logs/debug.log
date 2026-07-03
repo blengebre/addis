@@ -1,0 +1,20 @@
+2026-06-30 08:24:36,701 INFO    MainThread:4060124 [wandb_setup.py:_flush():81] Current SDK version is 0.28.0
+2026-06-30 08:24:36,702 INFO    MainThread:4060124 [wandb_setup.py:_flush():81] Configure stats pid to 4060124
+2026-06-30 08:24:36,703 INFO    MainThread:4060124 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-06-30 08:24:36,703 INFO    MainThread:4060124 [wandb_init.py:setup_run_log_directory():725] Logging user logs to /home/genesistwo/newe/addis/wandb/run-20260630_082436-9clpy32v/logs/debug.log
+2026-06-30 08:24:36,703 INFO    MainThread:4060124 [wandb_init.py:setup_run_log_directory():726] Logging internal logs to /home/genesistwo/newe/addis/wandb/run-20260630_082436-9clpy32v/logs/debug-internal.log
+2026-06-30 08:24:36,703 INFO    MainThread:4060124 [wandb_init.py:init():768] calling init triggers
+2026-06-30 08:24:36,704 INFO    MainThread:4060124 [wandb_init.py:init():773] wandb.init called with sweep_config: {}
+config: {'architecture': 'Transformer', 'dataset': 'cleaned_amh_omo.xlsx', 'epochs': 20, 'batch_size': 256, 'learning_rate': 'Noam schedule', 'optimizer': 'Adam', 'd_model': 512, 'num_heads': 8, 'ff_dim': 1024, 'encoder_layers': 8, 'decoder_layers': 8, 'vocab_size': 8000, 'tokenizer': 'SentencePiece BPE', '_wandb': {}}
+2026-06-30 08:24:36,704 INFO    MainThread:4060124 [wandb_init.py:init():816] starting backend
+2026-06-30 08:24:36,704 INFO    MainThread:4060124 [wandb_init.py:init():831] sending inform_init request
+2026-06-30 08:24:37,577 INFO    MainThread:4060124 [wandb_init.py:init():836] backend started and connected
+2026-06-30 08:24:37,639 INFO    MainThread:4060124 [wandb_init.py:init():906] updated telemetry
+2026-06-30 08:24:37,650 INFO    MainThread:4060124 [wandb_init.py:init():929] communicating run to backend with 90.0 second timeout
+2026-06-30 08:24:38,305 INFO    MainThread:4060124 [wandb_init.py:init():974] starting run threads in backend
+2026-06-30 08:24:38,495 INFO    MainThread:4060124 [wandb_run.py:_console_start():2523] atexit reg
+2026-06-30 08:24:38,498 INFO    MainThread:4060124 [wandb_run.py:_redirect():2373] redirect: wrap_raw
+2026-06-30 08:24:38,499 INFO    MainThread:4060124 [wandb_run.py:_redirect():2442] Wrapping output streams.
+2026-06-30 08:24:38,499 INFO    MainThread:4060124 [wandb_run.py:_redirect():2465] Redirects installed.
+2026-06-30 08:24:38,503 INFO    MainThread:4060124 [wandb_init.py:init():1012] run started, returning control to user process
+2026-06-30 08:25:21,349 INFO    MainThread:4060124 [wandb_run.py:_config_callback():1346] config_cb None None {'max_in': 153, 'max_out': 75}

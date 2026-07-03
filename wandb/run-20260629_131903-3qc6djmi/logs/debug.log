@@ -1,0 +1,13 @@
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_setup.py:_flush():81] Current SDK version is 0.28.0
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_setup.py:_flush():81] Configure stats pid to 3788907
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_init.py:setup_run_log_directory():725] Logging user logs to /home/genesistwo/newe/addis/wandb/run-20260629_131903-3qc6djmi/logs/debug.log
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_init.py:setup_run_log_directory():726] Logging internal logs to /home/genesistwo/newe/addis/wandb/run-20260629_131903-3qc6djmi/logs/debug-internal.log
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_init.py:init():768] calling init triggers
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_init.py:init():773] wandb.init called with sweep_config: {}
+config: {'architecture': 'Transformer', 'dataset': 'cleaned_amh_omo.xlsx', 'epochs': 20, 'batch_size': 16, 'learning_rate': 'Noam schedule', 'optimizer': 'Adam', 'd_model': 128, 'num_heads': 4, 'ff_dim': 512, 'encoder_layers': 2, 'decoder_layers': 2, 'vocab_size': 8000, 'tokenizer': 'SentencePiece BPE', 'max_in': None, 'max_out': None, '_wandb': {}}
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_init.py:init():816] starting backend
+2026-06-29 13:19:03,464 INFO    MainThread:3788907 [wandb_init.py:init():831] sending inform_init request
+2026-06-29 13:19:04,211 INFO    MainThread:3788907 [wandb_init.py:init():836] backend started and connected
+2026-06-29 13:19:04,221 INFO    MainThread:3788907 [wandb_init.py:init():906] updated telemetry
+2026-06-29 13:19:04,226 INFO    MainThread:3788907 [wandb_init.py:init():929] communicating run to backend with 90.0 second timeout
